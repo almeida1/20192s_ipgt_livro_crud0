@@ -47,16 +47,29 @@ public class REQ01CadastrarLivro {
 		// then:
 		assertTrue(violations.isEmpty());
 	}
+
 	@Test
 	public void CT03DeveDetectarTituloInvalido() {
-	validatorFactory = Validation.buildDefaultValidatorFactory();
-	validator = validatorFactory.getValidator();
-	// dado que o titulo do livro esta invalido
-	Livro livro = new Livro("3333", "", "Delamaro");
-	// when:
-	Set<ConstraintViolation<Livro>> violations = validator.validate(livro);
-	// then:
-	assertEquals(violations.size(), 1);
-	assertEquals("O titulo deve ser preenchido", violations.iterator().next().getMessage());
+		validatorFactory = Validation.buildDefaultValidatorFactory();
+		validator = validatorFactory.getValidator();
+		// dado que o titulo do livro esta invalido
+		Livro livro = new Livro("3333", "", "Delamaro");
+		// when:
+		Set<ConstraintViolation<Livro>> violations = validator.validate(livro);
+		// then:
+		assertEquals(violations.size(), 1);
+		assertEquals("O titulo deve ser preenchido", violations.iterator().next().getMessage());
+	}
+	@Test
+	public void CT04DeveDetectarISBNInvalido() {
+		validatorFactory = Validation.buildDefaultValidatorFactory();
+		validator = validatorFactory.getValidator();
+		// dado que o titulo do livro esta invalido
+		Livro livro = new Livro("", "Teste", "Delamaro");
+		// when:
+		Set<ConstraintViolation<Livro>> violations = validator.validate(livro);
+		// then:
+		assertEquals(violations.size(), 1);
+		assertEquals("O titulo deve ser preenchido", violations.iterator().next().getMessage());
 	}
 }

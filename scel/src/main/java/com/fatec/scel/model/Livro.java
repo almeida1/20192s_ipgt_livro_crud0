@@ -25,6 +25,7 @@ public class Livro {
 	@Column(nullable = false, length = 100)
 	@NotEmpty(message = "O titulo deve ser preenchido")
 	private String titulo;
+	
 	@Column(nullable = false)
 	@NotNull(message = "Autor invalido")
 	@Size(min = 1, max = 50, message = "Autor deve ter entre 1 e 50 caracteres")

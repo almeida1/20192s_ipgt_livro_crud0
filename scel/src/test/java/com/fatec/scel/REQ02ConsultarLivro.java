@@ -29,4 +29,20 @@ public class REQ02ConsultarLivro {
 		assertThat(ro.getTitulo()).isEqualTo(livro.getTitulo());
 		equals (ro.equals(livro));
 	}
+	@Test
+	public void CT02ConsultaLivro_isbn_invalido() {
+		// dado que o livro esta cadastrado
+		// quando o usurio consulta o livro
+		Livro ro = repository.findByIsbn("");
+		// entao 
+		assertThat(ro).isNull();
+	}
+	@Test
+	public void CT03ConsultaLivro_isbn_nao_cadastrado() {
+		// dado que o livro esta cadastrado
+		// quando o usurio consulta o livro
+		Livro ro = repository.findByIsbn("");
+		// entao 
+		assertThat(ro).isNull();
+	}
 }
